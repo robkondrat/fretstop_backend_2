@@ -24,10 +24,10 @@ export default function Home() {
           User: _allUsersMeta {
             count
           }
-          Product: _allProductsMeta {
+          Guitar: _allGuitarsMeta {
             count
           }
-          ProductImage: _allProductImagesMeta {
+          GuitarImage: _allGuitarImagesMeta {
             count
           }
           CartItem: _allCartItemsMeta {

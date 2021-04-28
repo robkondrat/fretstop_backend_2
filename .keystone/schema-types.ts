@@ -28,10 +28,10 @@ export type RoleRelateToOneInput = {
   readonly disconnectAll?: Scalars['Boolean'] | null;
 };
 
-export type ProductRelateToManyInput = {
-  readonly create?: ReadonlyArray<ProductCreateInput | null> | null;
-  readonly connect?: ReadonlyArray<ProductWhereUniqueInput | null> | null;
-  readonly disconnect?: ReadonlyArray<ProductWhereUniqueInput | null> | null;
+export type GuitarRelateToManyInput = {
+  readonly create?: ReadonlyArray<GuitarCreateInput | null> | null;
+  readonly connect?: ReadonlyArray<GuitarWhereUniqueInput | null> | null;
+  readonly disconnect?: ReadonlyArray<GuitarWhereUniqueInput | null> | null;
   readonly disconnectAll?: Scalars['Boolean'] | null;
 };
 
@@ -87,9 +87,9 @@ export type UserWhereInput = {
   readonly orders_none?: OrderWhereInput | null;
   readonly role?: RoleWhereInput | null;
   readonly role_is_null?: Scalars['Boolean'] | null;
-  readonly products_every?: ProductWhereInput | null;
-  readonly products_some?: ProductWhereInput | null;
-  readonly products_none?: ProductWhereInput | null;
+  readonly guitars_every?: GuitarWhereInput | null;
+  readonly guitars_some?: GuitarWhereInput | null;
+  readonly guitars_none?: GuitarWhereInput | null;
   readonly passwordResetToken_is_set?: Scalars['Boolean'] | null;
   readonly passwordResetIssuedAt?: Scalars['String'] | null;
   readonly passwordResetIssuedAt_not?: Scalars['String'] | null;
@@ -159,8 +159,8 @@ export type SortUsersBy =
   | 'orders_DESC'
   | 'role_ASC'
   | 'role_DESC'
-  | 'products_ASC'
-  | 'products_DESC'
+  | 'guitars_ASC'
+  | 'guitars_DESC'
   | 'passwordResetIssuedAt_ASC'
   | 'passwordResetIssuedAt_DESC'
   | 'passwordResetRedeemedAt_ASC'
@@ -177,7 +177,7 @@ export type UserUpdateInput = {
   readonly cart?: CartItemRelateToManyInput | null;
   readonly orders?: OrderRelateToManyInput | null;
   readonly role?: RoleRelateToOneInput | null;
-  readonly products?: ProductRelateToManyInput | null;
+  readonly guitars?: GuitarRelateToManyInput | null;
   readonly passwordResetToken?: Scalars['String'] | null;
   readonly passwordResetIssuedAt?: Scalars['String'] | null;
   readonly passwordResetRedeemedAt?: Scalars['String'] | null;
@@ -198,7 +198,7 @@ export type UserCreateInput = {
   readonly cart?: CartItemRelateToManyInput | null;
   readonly orders?: OrderRelateToManyInput | null;
   readonly role?: RoleRelateToOneInput | null;
-  readonly products?: ProductRelateToManyInput | null;
+  readonly guitars?: GuitarRelateToManyInput | null;
   readonly passwordResetToken?: Scalars['String'] | null;
   readonly passwordResetIssuedAt?: Scalars['String'] | null;
   readonly passwordResetRedeemedAt?: Scalars['String'] | null;
@@ -211,10 +211,10 @@ export type UsersCreateInput = {
   readonly data?: UserCreateInput | null;
 };
 
-export type ProductImageRelateToOneInput = {
-  readonly create?: ProductImageCreateInput | null;
-  readonly connect?: ProductImageWhereUniqueInput | null;
-  readonly disconnect?: ProductImageWhereUniqueInput | null;
+export type GuitarImageRelateToOneInput = {
+  readonly create?: GuitarImageCreateInput | null;
+  readonly connect?: GuitarImageWhereUniqueInput | null;
+  readonly disconnect?: GuitarImageWhereUniqueInput | null;
   readonly disconnectAll?: Scalars['Boolean'] | null;
 };
 
@@ -225,9 +225,9 @@ export type UserRelateToOneInput = {
   readonly disconnectAll?: Scalars['Boolean'] | null;
 };
 
-export type ProductWhereInput = {
-  readonly AND?: ReadonlyArray<ProductWhereInput | null> | null;
-  readonly OR?: ReadonlyArray<ProductWhereInput | null> | null;
+export type GuitarWhereInput = {
+  readonly AND?: ReadonlyArray<GuitarWhereInput | null> | null;
+  readonly OR?: ReadonlyArray<GuitarWhereInput | null> | null;
   readonly id?: Scalars['ID'] | null;
   readonly id_not?: Scalars['ID'] | null;
   readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
@@ -268,7 +268,7 @@ export type ProductWhereInput = {
   readonly description_not_ends_with_i?: Scalars['String'] | null;
   readonly description_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly photo?: ProductImageWhereInput | null;
+  readonly photo?: GuitarImageWhereInput | null;
   readonly photo_is_null?: Scalars['Boolean'] | null;
   readonly status?: Scalars['String'] | null;
   readonly status_not?: Scalars['String'] | null;
@@ -300,11 +300,11 @@ export type ProductWhereInput = {
   readonly user_is_null?: Scalars['Boolean'] | null;
 };
 
-export type ProductWhereUniqueInput = {
+export type GuitarWhereUniqueInput = {
   readonly id: Scalars['ID'];
 };
 
-export type SortProductsBy =
+export type SortGuitarsBy =
   | 'id_ASC'
   | 'id_DESC'
   | 'name_ASC'
@@ -320,31 +320,31 @@ export type SortProductsBy =
   | 'user_ASC'
   | 'user_DESC';
 
-export type ProductUpdateInput = {
+export type GuitarUpdateInput = {
   readonly name?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
-  readonly photo?: ProductImageRelateToOneInput | null;
+  readonly photo?: GuitarImageRelateToOneInput | null;
   readonly status?: Scalars['String'] | null;
   readonly price?: Scalars['Int'] | null;
   readonly user?: UserRelateToOneInput | null;
 };
 
-export type ProductsUpdateInput = {
+export type GuitarsUpdateInput = {
   readonly id: Scalars['ID'];
-  readonly data?: ProductUpdateInput | null;
+  readonly data?: GuitarUpdateInput | null;
 };
 
-export type ProductCreateInput = {
+export type GuitarCreateInput = {
   readonly name?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
-  readonly photo?: ProductImageRelateToOneInput | null;
+  readonly photo?: GuitarImageRelateToOneInput | null;
   readonly status?: Scalars['String'] | null;
   readonly price?: Scalars['Int'] | null;
   readonly user?: UserRelateToOneInput | null;
 };
 
-export type ProductsCreateInput = {
-  readonly data?: ProductCreateInput | null;
+export type GuitarsCreateInput = {
+  readonly data?: GuitarCreateInput | null;
 };
 
 export type CloudinaryImageFormat = {
@@ -379,16 +379,16 @@ export type CloudinaryImageFormat = {
   readonly transformation?: Scalars['String'] | null;
 };
 
-export type ProductRelateToOneInput = {
-  readonly create?: ProductCreateInput | null;
-  readonly connect?: ProductWhereUniqueInput | null;
-  readonly disconnect?: ProductWhereUniqueInput | null;
+export type GuitarRelateToOneInput = {
+  readonly create?: GuitarCreateInput | null;
+  readonly connect?: GuitarWhereUniqueInput | null;
+  readonly disconnect?: GuitarWhereUniqueInput | null;
   readonly disconnectAll?: Scalars['Boolean'] | null;
 };
 
-export type ProductImageWhereInput = {
-  readonly AND?: ReadonlyArray<ProductImageWhereInput | null> | null;
-  readonly OR?: ReadonlyArray<ProductImageWhereInput | null> | null;
+export type GuitarImageWhereInput = {
+  readonly AND?: ReadonlyArray<GuitarImageWhereInput | null> | null;
+  readonly OR?: ReadonlyArray<GuitarImageWhereInput | null> | null;
   readonly id?: Scalars['ID'] | null;
   readonly id_not?: Scalars['ID'] | null;
   readonly id_in?: ReadonlyArray<Scalars['ID'] | null> | null;
@@ -415,41 +415,41 @@ export type ProductImageWhereInput = {
   readonly altText_not_ends_with_i?: Scalars['String'] | null;
   readonly altText_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly altText_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly product?: ProductWhereInput | null;
-  readonly product_is_null?: Scalars['Boolean'] | null;
+  readonly guitar?: GuitarWhereInput | null;
+  readonly guitar_is_null?: Scalars['Boolean'] | null;
 };
 
-export type ProductImageWhereUniqueInput = {
+export type GuitarImageWhereUniqueInput = {
   readonly id: Scalars['ID'];
 };
 
-export type SortProductImagesBy =
+export type SortGuitarImagesBy =
   | 'id_ASC'
   | 'id_DESC'
   | 'altText_ASC'
   | 'altText_DESC'
-  | 'product_ASC'
-  | 'product_DESC';
+  | 'guitar_ASC'
+  | 'guitar_DESC';
 
-export type ProductImageUpdateInput = {
+export type GuitarImageUpdateInput = {
   readonly image?: any | null;
   readonly altText?: Scalars['String'] | null;
-  readonly product?: ProductRelateToOneInput | null;
+  readonly guitar?: GuitarRelateToOneInput | null;
 };
 
-export type ProductImagesUpdateInput = {
+export type GuitarImagesUpdateInput = {
   readonly id: Scalars['ID'];
-  readonly data?: ProductImageUpdateInput | null;
+  readonly data?: GuitarImageUpdateInput | null;
 };
 
-export type ProductImageCreateInput = {
+export type GuitarImageCreateInput = {
   readonly image?: any | null;
   readonly altText?: Scalars['String'] | null;
-  readonly product?: ProductRelateToOneInput | null;
+  readonly guitar?: GuitarRelateToOneInput | null;
 };
 
-export type ProductImagesCreateInput = {
-  readonly data?: ProductImageCreateInput | null;
+export type GuitarImagesCreateInput = {
+  readonly data?: GuitarImageCreateInput | null;
 };
 
 export type CartItemWhereInput = {
@@ -467,8 +467,8 @@ export type CartItemWhereInput = {
   readonly quantity_gte?: Scalars['Int'] | null;
   readonly quantity_in?: ReadonlyArray<Scalars['Int'] | null> | null;
   readonly quantity_not_in?: ReadonlyArray<Scalars['Int'] | null> | null;
-  readonly product?: ProductWhereInput | null;
-  readonly product_is_null?: Scalars['Boolean'] | null;
+  readonly guitar?: GuitarWhereInput | null;
+  readonly guitar_is_null?: Scalars['Boolean'] | null;
   readonly user?: UserWhereInput | null;
   readonly user_is_null?: Scalars['Boolean'] | null;
 };
@@ -482,14 +482,14 @@ export type SortCartItemsBy =
   | 'id_DESC'
   | 'quantity_ASC'
   | 'quantity_DESC'
-  | 'product_ASC'
-  | 'product_DESC'
+  | 'guitar_ASC'
+  | 'guitar_DESC'
   | 'user_ASC'
   | 'user_DESC';
 
 export type CartItemUpdateInput = {
   readonly quantity?: Scalars['Int'] | null;
-  readonly product?: ProductRelateToOneInput | null;
+  readonly guitar?: GuitarRelateToOneInput | null;
   readonly user?: UserRelateToOneInput | null;
 };
 
@@ -500,7 +500,7 @@ export type CartItemsUpdateInput = {
 
 export type CartItemCreateInput = {
   readonly quantity?: Scalars['Int'] | null;
-  readonly product?: ProductRelateToOneInput | null;
+  readonly guitar?: GuitarRelateToOneInput | null;
   readonly user?: UserRelateToOneInput | null;
 };
 
@@ -558,7 +558,7 @@ export type OrderItemWhereInput = {
   readonly description_not_ends_with_i?: Scalars['String'] | null;
   readonly description_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly description_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly photo?: ProductImageWhereInput | null;
+  readonly photo?: GuitarImageWhereInput | null;
   readonly photo_is_null?: Scalars['Boolean'] | null;
   readonly price?: Scalars['Int'] | null;
   readonly price_not?: Scalars['Int'] | null;
@@ -603,7 +603,7 @@ export type SortOrderItemsBy =
 export type OrderItemUpdateInput = {
   readonly name?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
-  readonly photo?: ProductImageRelateToOneInput | null;
+  readonly photo?: GuitarImageRelateToOneInput | null;
   readonly price?: Scalars['Int'] | null;
   readonly quantity?: Scalars['Int'] | null;
   readonly order?: OrderRelateToOneInput | null;
@@ -617,7 +617,7 @@ export type OrderItemsUpdateInput = {
 export type OrderItemCreateInput = {
   readonly name?: Scalars['String'] | null;
   readonly description?: Scalars['String'] | null;
-  readonly photo?: ProductImageRelateToOneInput | null;
+  readonly photo?: GuitarImageRelateToOneInput | null;
   readonly price?: Scalars['Int'] | null;
   readonly quantity?: Scalars['Int'] | null;
   readonly order?: OrderRelateToOneInput | null;
@@ -745,8 +745,8 @@ export type RoleWhereInput = {
   readonly name_not_ends_with_i?: Scalars['String'] | null;
   readonly name_in?: ReadonlyArray<Scalars['String'] | null> | null;
   readonly name_not_in?: ReadonlyArray<Scalars['String'] | null> | null;
-  readonly canManageProducts?: Scalars['Boolean'] | null;
-  readonly canManageProducts_not?: Scalars['Boolean'] | null;
+  readonly canManageGuitars?: Scalars['Boolean'] | null;
+  readonly canManageGuitars_not?: Scalars['Boolean'] | null;
   readonly canSeeOtherUsers?: Scalars['Boolean'] | null;
   readonly canSeeOtherUsers_not?: Scalars['Boolean'] | null;
   readonly canManageUsers?: Scalars['Boolean'] | null;
@@ -771,8 +771,8 @@ export type SortRolesBy =
   | 'id_DESC'
   | 'name_ASC'
   | 'name_DESC'
-  | 'canManageProducts_ASC'
-  | 'canManageProducts_DESC'
+  | 'canManageGuitars_ASC'
+  | 'canManageGuitars_DESC'
   | 'canSeeOtherUsers_ASC'
   | 'canSeeOtherUsers_DESC'
   | 'canManageUsers_ASC'
@@ -788,7 +788,7 @@ export type SortRolesBy =
 
 export type RoleUpdateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly canManageProducts?: Scalars['Boolean'] | null;
+  readonly canManageGuitars?: Scalars['Boolean'] | null;
   readonly canSeeOtherUsers?: Scalars['Boolean'] | null;
   readonly canManageUsers?: Scalars['Boolean'] | null;
   readonly canManageRoles?: Scalars['Boolean'] | null;
@@ -804,7 +804,7 @@ export type RolesUpdateInput = {
 
 export type RoleCreateInput = {
   readonly name?: Scalars['String'] | null;
-  readonly canManageProducts?: Scalars['Boolean'] | null;
+  readonly canManageGuitars?: Scalars['Boolean'] | null;
   readonly canSeeOtherUsers?: Scalars['Boolean'] | null;
   readonly canManageUsers?: Scalars['Boolean'] | null;
   readonly canManageRoles?: Scalars['Boolean'] | null;
@@ -873,7 +873,7 @@ export type UserListTypeInfo = {
     | 'cart'
     | 'orders'
     | 'role'
-    | 'products'
+    | 'guitars'
     | 'passwordResetToken'
     | 'passwordResetIssuedAt'
     | 'passwordResetRedeemedAt'
@@ -888,7 +888,7 @@ export type UserListTypeInfo = {
     readonly cart?: string | null;
     readonly orders?: string | null;
     readonly role?: string | null;
-    readonly products?: string | null;
+    readonly guitars?: string | null;
     readonly passwordResetToken?: string | null;
     readonly passwordResetIssuedAt?: Date | null;
     readonly passwordResetRedeemedAt?: Date | null;
@@ -921,8 +921,8 @@ export type UserListFn = (
   UserListTypeInfo['fields']
 >;
 
-export type ProductListTypeInfo = {
-  key: 'Product';
+export type GuitarListTypeInfo = {
+  key: 'Guitar';
   fields: 'id' | 'name' | 'description' | 'photo' | 'status' | 'price' | 'user';
   backing: {
     readonly id: string;
@@ -934,71 +934,71 @@ export type ProductListTypeInfo = {
     readonly user?: string | null;
   };
   inputs: {
-    where: ProductWhereInput;
-    create: ProductCreateInput;
-    update: ProductUpdateInput;
+    where: GuitarWhereInput;
+    create: GuitarCreateInput;
+    update: GuitarUpdateInput;
   };
   args: {
     listQuery: {
-      readonly where?: ProductWhereInput | null;
-      readonly sortBy?: ReadonlyArray<SortProductsBy> | null;
+      readonly where?: GuitarWhereInput | null;
+      readonly sortBy?: ReadonlyArray<SortGuitarsBy> | null;
       readonly first?: Scalars['Int'] | null;
       readonly skip?: Scalars['Int'] | null;
     };
   };
 };
 
-export type ProductListFn = (
+export type GuitarListFn = (
   listConfig: import('@keystone-next/keystone/schema').ListConfig<
-    ProductListTypeInfo,
-    ProductListTypeInfo['fields']
+    GuitarListTypeInfo,
+    GuitarListTypeInfo['fields']
   >
 ) => import('@keystone-next/keystone/schema').ListConfig<
-  ProductListTypeInfo,
-  ProductListTypeInfo['fields']
+  GuitarListTypeInfo,
+  GuitarListTypeInfo['fields']
 >;
 
-export type ProductImageListTypeInfo = {
-  key: 'ProductImage';
-  fields: 'id' | 'image' | 'altText' | 'product';
+export type GuitarImageListTypeInfo = {
+  key: 'GuitarImage';
+  fields: 'id' | 'image' | 'altText' | 'guitar';
   backing: {
     readonly id: string;
     readonly image?: any;
     readonly altText?: string | null;
-    readonly product?: string | null;
+    readonly guitar?: string | null;
   };
   inputs: {
-    where: ProductImageWhereInput;
-    create: ProductImageCreateInput;
-    update: ProductImageUpdateInput;
+    where: GuitarImageWhereInput;
+    create: GuitarImageCreateInput;
+    update: GuitarImageUpdateInput;
   };
   args: {
     listQuery: {
-      readonly where?: ProductImageWhereInput | null;
-      readonly sortBy?: ReadonlyArray<SortProductImagesBy> | null;
+      readonly where?: GuitarImageWhereInput | null;
+      readonly sortBy?: ReadonlyArray<SortGuitarImagesBy> | null;
       readonly first?: Scalars['Int'] | null;
       readonly skip?: Scalars['Int'] | null;
     };
   };
 };
 
-export type ProductImageListFn = (
+export type GuitarImageListFn = (
   listConfig: import('@keystone-next/keystone/schema').ListConfig<
-    ProductImageListTypeInfo,
-    ProductImageListTypeInfo['fields']
+    GuitarImageListTypeInfo,
+    GuitarImageListTypeInfo['fields']
   >
 ) => import('@keystone-next/keystone/schema').ListConfig<
-  ProductImageListTypeInfo,
-  ProductImageListTypeInfo['fields']
+  GuitarImageListTypeInfo,
+  GuitarImageListTypeInfo['fields']
 >;
 
 export type CartItemListTypeInfo = {
   key: 'CartItem';
-  fields: 'id' | 'quantity' | 'product' | 'user';
+  fields: 'id' | 'quantity' | 'guitar' | 'user';
   backing: {
     readonly id: string;
     readonly quantity?: number | null;
-    readonly product?: string | null;
+    readonly guitar?: string | null;
     readonly user?: string | null;
   };
   inputs: {
@@ -1110,7 +1110,7 @@ export type RoleListTypeInfo = {
   fields:
     | 'id'
     | 'name'
-    | 'canManageProducts'
+    | 'canManageGuitars'
     | 'canSeeOtherUsers'
     | 'canManageUsers'
     | 'canManageRoles'
@@ -1120,7 +1120,7 @@ export type RoleListTypeInfo = {
   backing: {
     readonly id: string;
     readonly name?: string | null;
-    readonly canManageProducts?: boolean | null;
+    readonly canManageGuitars?: boolean | null;
     readonly canSeeOtherUsers?: boolean | null;
     readonly canManageUsers?: boolean | null;
     readonly canManageRoles?: boolean | null;
@@ -1155,8 +1155,8 @@ export type RoleListFn = (
 
 export type KeystoneListsTypeInfo = {
   readonly User: UserListTypeInfo;
-  readonly Product: ProductListTypeInfo;
-  readonly ProductImage: ProductImageListTypeInfo;
+  readonly Guitar: GuitarListTypeInfo;
+  readonly GuitarImage: GuitarImageListTypeInfo;
   readonly CartItem: CartItemListTypeInfo;
   readonly OrderItem: OrderItemListTypeInfo;
   readonly Order: OrderListTypeInfo;

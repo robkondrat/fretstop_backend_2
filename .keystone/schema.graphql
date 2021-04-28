@@ -19,10 +19,10 @@ input RoleRelateToOneInput {
   disconnectAll: Boolean
 }
 
-input ProductRelateToManyInput {
-  create: [ProductCreateInput]
-  connect: [ProductWhereUniqueInput]
-  disconnect: [ProductWhereUniqueInput]
+input GuitarRelateToManyInput {
+  create: [GuitarCreateInput]
+  connect: [GuitarWhereUniqueInput]
+  disconnect: [GuitarWhereUniqueInput]
   disconnectAll: Boolean
 }
 
@@ -37,8 +37,8 @@ type User {
   orders(where: OrderWhereInput, search: String, sortBy: [SortOrdersBy!], orderBy: String, first: Int, skip: Int): [Order!]!
   _ordersMeta(where: OrderWhereInput, search: String, sortBy: [SortOrdersBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
   role: Role
-  products(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product!]!
-  _productsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  guitars(where: GuitarWhereInput, search: String, sortBy: [SortGuitarsBy!], orderBy: String, first: Int, skip: Int): [Guitar!]!
+  _guitarsMeta(where: GuitarWhereInput, search: String, sortBy: [SortGuitarsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
   passwordResetToken_is_set: Boolean
   passwordResetIssuedAt: String
   passwordResetRedeemedAt: String
@@ -113,13 +113,13 @@ input UserWhereInput {
   role_is_null: Boolean
 
   """ condition must be true for all nodes """
-  products_every: ProductWhereInput
+  guitars_every: GuitarWhereInput
 
   """ condition must be true for at least 1 node """
-  products_some: ProductWhereInput
+  guitars_some: GuitarWhereInput
 
   """ condition must be false for all nodes """
-  products_none: ProductWhereInput
+  guitars_none: GuitarWhereInput
   passwordResetToken_is_set: Boolean
   passwordResetIssuedAt: String
   passwordResetIssuedAt_not: String
@@ -173,8 +173,8 @@ enum SortUsersBy {
   orders_DESC
   role_ASC
   role_DESC
-  products_ASC
-  products_DESC
+  guitars_ASC
+  guitars_DESC
   passwordResetIssuedAt_ASC
   passwordResetIssuedAt_DESC
   passwordResetRedeemedAt_ASC
@@ -192,7 +192,7 @@ input UserUpdateInput {
   cart: CartItemRelateToManyInput
   orders: OrderRelateToManyInput
   role: RoleRelateToOneInput
-  products: ProductRelateToManyInput
+  guitars: GuitarRelateToManyInput
   passwordResetToken: String
   passwordResetIssuedAt: String
   passwordResetRedeemedAt: String
@@ -213,7 +213,7 @@ input UserCreateInput {
   cart: CartItemRelateToManyInput
   orders: OrderRelateToManyInput
   role: RoleRelateToOneInput
-  products: ProductRelateToManyInput
+  guitars: GuitarRelateToManyInput
   passwordResetToken: String
   passwordResetIssuedAt: String
   passwordResetRedeemedAt: String
@@ -226,10 +226,10 @@ input UsersCreateInput {
   data: UserCreateInput
 }
 
-input ProductImageRelateToOneInput {
-  create: ProductImageCreateInput
-  connect: ProductImageWhereUniqueInput
-  disconnect: ProductImageWhereUniqueInput
+input GuitarImageRelateToOneInput {
+  create: GuitarImageCreateInput
+  connect: GuitarImageWhereUniqueInput
+  disconnect: GuitarImageWhereUniqueInput
   disconnectAll: Boolean
 }
 
@@ -241,19 +241,19 @@ input UserRelateToOneInput {
 }
 
 """ A keystone list """
-type Product {
+type Guitar {
   id: ID!
   name: String
   description: String
-  photo: ProductImage
+  photo: GuitarImage
   status: String
   price: Int
   user: User
 }
 
-input ProductWhereInput {
-  AND: [ProductWhereInput]
-  OR: [ProductWhereInput]
+input GuitarWhereInput {
+  AND: [GuitarWhereInput]
+  OR: [GuitarWhereInput]
   id: ID
   id_not: ID
   id_in: [ID]
@@ -294,7 +294,7 @@ input ProductWhereInput {
   description_not_ends_with_i: String
   description_in: [String]
   description_not_in: [String]
-  photo: ProductImageWhereInput
+  photo: GuitarImageWhereInput
   photo_is_null: Boolean
   status: String
   status_not: String
@@ -326,11 +326,11 @@ input ProductWhereInput {
   user_is_null: Boolean
 }
 
-input ProductWhereUniqueInput {
+input GuitarWhereUniqueInput {
   id: ID!
 }
 
-enum SortProductsBy {
+enum SortGuitarsBy {
   id_ASC
   id_DESC
   name_ASC
@@ -347,31 +347,31 @@ enum SortProductsBy {
   user_DESC
 }
 
-input ProductUpdateInput {
+input GuitarUpdateInput {
   name: String
   description: String
-  photo: ProductImageRelateToOneInput
+  photo: GuitarImageRelateToOneInput
   status: String
   price: Int
   user: UserRelateToOneInput
 }
 
-input ProductsUpdateInput {
+input GuitarsUpdateInput {
   id: ID!
-  data: ProductUpdateInput
+  data: GuitarUpdateInput
 }
 
-input ProductCreateInput {
+input GuitarCreateInput {
   name: String
   description: String
-  photo: ProductImageRelateToOneInput
+  photo: GuitarImageRelateToOneInput
   status: String
   price: Int
   user: UserRelateToOneInput
 }
 
-input ProductsCreateInput {
-  data: ProductCreateInput
+input GuitarsCreateInput {
+  data: GuitarCreateInput
 }
 
 type CloudinaryImage_File {
@@ -423,24 +423,24 @@ input CloudinaryImageFormat {
   transformation: String
 }
 
-input ProductRelateToOneInput {
-  create: ProductCreateInput
-  connect: ProductWhereUniqueInput
-  disconnect: ProductWhereUniqueInput
+input GuitarRelateToOneInput {
+  create: GuitarCreateInput
+  connect: GuitarWhereUniqueInput
+  disconnect: GuitarWhereUniqueInput
   disconnectAll: Boolean
 }
 
 """ A keystone list """
-type ProductImage {
+type GuitarImage {
   id: ID!
   image: CloudinaryImage_File
   altText: String
-  product: Product
+  guitar: Guitar
 }
 
-input ProductImageWhereInput {
-  AND: [ProductImageWhereInput]
-  OR: [ProductImageWhereInput]
+input GuitarImageWhereInput {
+  AND: [GuitarImageWhereInput]
+  OR: [GuitarImageWhereInput]
   id: ID
   id_not: ID
   id_in: [ID]
@@ -467,49 +467,49 @@ input ProductImageWhereInput {
   altText_not_ends_with_i: String
   altText_in: [String]
   altText_not_in: [String]
-  product: ProductWhereInput
-  product_is_null: Boolean
+  guitar: GuitarWhereInput
+  guitar_is_null: Boolean
 }
 
-input ProductImageWhereUniqueInput {
+input GuitarImageWhereUniqueInput {
   id: ID!
 }
 
-enum SortProductImagesBy {
+enum SortGuitarImagesBy {
   id_ASC
   id_DESC
   altText_ASC
   altText_DESC
-  product_ASC
-  product_DESC
+  guitar_ASC
+  guitar_DESC
 }
 
-input ProductImageUpdateInput {
+input GuitarImageUpdateInput {
   image: Upload
   altText: String
-  product: ProductRelateToOneInput
+  guitar: GuitarRelateToOneInput
 }
 
-input ProductImagesUpdateInput {
+input GuitarImagesUpdateInput {
   id: ID!
-  data: ProductImageUpdateInput
+  data: GuitarImageUpdateInput
 }
 
-input ProductImageCreateInput {
+input GuitarImageCreateInput {
   image: Upload
   altText: String
-  product: ProductRelateToOneInput
+  guitar: GuitarRelateToOneInput
 }
 
-input ProductImagesCreateInput {
-  data: ProductImageCreateInput
+input GuitarImagesCreateInput {
+  data: GuitarImageCreateInput
 }
 
 """ A keystone list """
 type CartItem {
   id: ID!
   quantity: Int
-  product: Product
+  guitar: Guitar
   user: User
 }
 
@@ -528,8 +528,8 @@ input CartItemWhereInput {
   quantity_gte: Int
   quantity_in: [Int]
   quantity_not_in: [Int]
-  product: ProductWhereInput
-  product_is_null: Boolean
+  guitar: GuitarWhereInput
+  guitar_is_null: Boolean
   user: UserWhereInput
   user_is_null: Boolean
 }
@@ -543,15 +543,15 @@ enum SortCartItemsBy {
   id_DESC
   quantity_ASC
   quantity_DESC
-  product_ASC
-  product_DESC
+  guitar_ASC
+  guitar_DESC
   user_ASC
   user_DESC
 }
 
 input CartItemUpdateInput {
   quantity: Int
-  product: ProductRelateToOneInput
+  guitar: GuitarRelateToOneInput
   user: UserRelateToOneInput
 }
 
@@ -562,7 +562,7 @@ input CartItemsUpdateInput {
 
 input CartItemCreateInput {
   quantity: Int
-  product: ProductRelateToOneInput
+  guitar: GuitarRelateToOneInput
   user: UserRelateToOneInput
 }
 
@@ -582,7 +582,7 @@ type OrderItem {
   id: ID!
   name: String
   description: String
-  photo: ProductImage
+  photo: GuitarImage
   price: Int
   quantity: Int
   order: Order
@@ -631,7 +631,7 @@ input OrderItemWhereInput {
   description_not_ends_with_i: String
   description_in: [String]
   description_not_in: [String]
-  photo: ProductImageWhereInput
+  photo: GuitarImageWhereInput
   photo_is_null: Boolean
   price: Int
   price_not: Int
@@ -677,7 +677,7 @@ enum SortOrderItemsBy {
 input OrderItemUpdateInput {
   name: String
   description: String
-  photo: ProductImageRelateToOneInput
+  photo: GuitarImageRelateToOneInput
   price: Int
   quantity: Int
   order: OrderRelateToOneInput
@@ -691,7 +691,7 @@ input OrderItemsUpdateInput {
 input OrderItemCreateInput {
   name: String
   description: String
-  photo: ProductImageRelateToOneInput
+  photo: GuitarImageRelateToOneInput
   price: Int
   quantity: Int
   order: OrderRelateToOneInput
@@ -816,7 +816,7 @@ input UserRelateToManyInput {
 type Role {
   id: ID!
   name: String
-  canManageProducts: Boolean
+  canManageGuitars: Boolean
   canSeeOtherUsers: Boolean
   canManageUsers: Boolean
   canManageRoles: Boolean
@@ -851,8 +851,8 @@ input RoleWhereInput {
   name_not_ends_with_i: String
   name_in: [String]
   name_not_in: [String]
-  canManageProducts: Boolean
-  canManageProducts_not: Boolean
+  canManageGuitars: Boolean
+  canManageGuitars_not: Boolean
   canSeeOtherUsers: Boolean
   canSeeOtherUsers_not: Boolean
   canManageUsers: Boolean
@@ -883,8 +883,8 @@ enum SortRolesBy {
   id_DESC
   name_ASC
   name_DESC
-  canManageProducts_ASC
-  canManageProducts_DESC
+  canManageGuitars_ASC
+  canManageGuitars_DESC
   canSeeOtherUsers_ASC
   canSeeOtherUsers_DESC
   canManageUsers_ASC
@@ -901,7 +901,7 @@ enum SortRolesBy {
 
 input RoleUpdateInput {
   name: String
-  canManageProducts: Boolean
+  canManageGuitars: Boolean
   canSeeOtherUsers: Boolean
   canManageUsers: Boolean
   canManageRoles: Boolean
@@ -917,7 +917,7 @@ input RolesUpdateInput {
 
 input RoleCreateInput {
   name: String
-  canManageProducts: Boolean
+  canManageGuitars: Boolean
   canSeeOtherUsers: Boolean
   canManageUsers: Boolean
   canManageRoles: Boolean
@@ -1123,31 +1123,31 @@ type Query {
   """ Retrieve the meta-data for the User list. """
   _UsersMeta: _ListMeta
 
-  """ Search for all Product items which match the where clause. """
-  allProducts(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): [Product]
+  """ Search for all Guitar items which match the where clause. """
+  allGuitars(where: GuitarWhereInput, search: String, sortBy: [SortGuitarsBy!], orderBy: String, first: Int, skip: Int): [Guitar]
 
-  """ Search for the Product item with the matching ID. """
-  Product(where: ProductWhereUniqueInput!): Product
+  """ Search for the Guitar item with the matching ID. """
+  Guitar(where: GuitarWhereUniqueInput!): Guitar
 
-  """ Perform a meta-query on all Product items which match the where clause. 
+  """ Perform a meta-query on all Guitar items which match the where clause. 
   """
-  _allProductsMeta(where: ProductWhereInput, search: String, sortBy: [SortProductsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  _allGuitarsMeta(where: GuitarWhereInput, search: String, sortBy: [SortGuitarsBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
 
-  """ Retrieve the meta-data for the Product list. """
-  _ProductsMeta: _ListMeta
+  """ Retrieve the meta-data for the Guitar list. """
+  _GuitarsMeta: _ListMeta
 
-  """ Search for all ProductImage items which match the where clause. """
-  allProductImages(where: ProductImageWhereInput, search: String, sortBy: [SortProductImagesBy!], orderBy: String, first: Int, skip: Int): [ProductImage]
+  """ Search for all GuitarImage items which match the where clause. """
+  allGuitarImages(where: GuitarImageWhereInput, search: String, sortBy: [SortGuitarImagesBy!], orderBy: String, first: Int, skip: Int): [GuitarImage]
 
-  """ Search for the ProductImage item with the matching ID. """
-  ProductImage(where: ProductImageWhereUniqueInput!): ProductImage
+  """ Search for the GuitarImage item with the matching ID. """
+  GuitarImage(where: GuitarImageWhereUniqueInput!): GuitarImage
 
-  """ Perform a meta-query on all ProductImage items which match the where clause. 
+  """ Perform a meta-query on all GuitarImage items which match the where clause. 
   """
-  _allProductImagesMeta(where: ProductImageWhereInput, search: String, sortBy: [SortProductImagesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
+  _allGuitarImagesMeta(where: GuitarImageWhereInput, search: String, sortBy: [SortGuitarImagesBy!], orderBy: String, first: Int, skip: Int): _QueryMeta
 
-  """ Retrieve the meta-data for the ProductImage list. """
-  _ProductImagesMeta: _ListMeta
+  """ Retrieve the meta-data for the GuitarImage list. """
+  _GuitarImagesMeta: _ListMeta
 
   """ Search for all CartItem items which match the where clause. """
   allCartItems(where: CartItemWhereInput, search: String, sortBy: [SortCartItemsBy!], orderBy: String, first: Int, skip: Int): [CartItem]
@@ -1229,41 +1229,41 @@ type Mutation {
   """ Delete multiple User items by ID. """
   deleteUsers(ids: [ID!]): [User]
 
-  """ Create a single Product item. """
-  createProduct(data: ProductCreateInput): Product
+  """ Create a single Guitar item. """
+  createGuitar(data: GuitarCreateInput): Guitar
 
-  """ Create multiple Product items. """
-  createProducts(data: [ProductsCreateInput]): [Product]
+  """ Create multiple Guitar items. """
+  createGuitars(data: [GuitarsCreateInput]): [Guitar]
 
-  """ Update a single Product item by ID. """
-  updateProduct(id: ID!, data: ProductUpdateInput): Product
+  """ Update a single Guitar item by ID. """
+  updateGuitar(id: ID!, data: GuitarUpdateInput): Guitar
 
-  """ Update multiple Product items by ID. """
-  updateProducts(data: [ProductsUpdateInput]): [Product]
+  """ Update multiple Guitar items by ID. """
+  updateGuitars(data: [GuitarsUpdateInput]): [Guitar]
 
-  """ Delete a single Product item by ID. """
-  deleteProduct(id: ID!): Product
+  """ Delete a single Guitar item by ID. """
+  deleteGuitar(id: ID!): Guitar
 
-  """ Delete multiple Product items by ID. """
-  deleteProducts(ids: [ID!]): [Product]
+  """ Delete multiple Guitar items by ID. """
+  deleteGuitars(ids: [ID!]): [Guitar]
 
-  """ Create a single ProductImage item. """
-  createProductImage(data: ProductImageCreateInput): ProductImage
+  """ Create a single GuitarImage item. """
+  createGuitarImage(data: GuitarImageCreateInput): GuitarImage
 
-  """ Create multiple ProductImage items. """
-  createProductImages(data: [ProductImagesCreateInput]): [ProductImage]
+  """ Create multiple GuitarImage items. """
+  createGuitarImages(data: [GuitarImagesCreateInput]): [GuitarImage]
 
-  """ Update a single ProductImage item by ID. """
-  updateProductImage(id: ID!, data: ProductImageUpdateInput): ProductImage
+  """ Update a single GuitarImage item by ID. """
+  updateGuitarImage(id: ID!, data: GuitarImageUpdateInput): GuitarImage
 
-  """ Update multiple ProductImage items by ID. """
-  updateProductImages(data: [ProductImagesUpdateInput]): [ProductImage]
+  """ Update multiple GuitarImage items by ID. """
+  updateGuitarImages(data: [GuitarImagesUpdateInput]): [GuitarImage]
 
-  """ Delete a single ProductImage item by ID. """
-  deleteProductImage(id: ID!): ProductImage
+  """ Delete a single GuitarImage item by ID. """
+  deleteGuitarImage(id: ID!): GuitarImage
 
-  """ Delete multiple ProductImage items by ID. """
-  deleteProductImages(ids: [ID!]): [ProductImage]
+  """ Delete multiple GuitarImage items by ID. """
+  deleteGuitarImages(ids: [ID!]): [GuitarImage]
 
   """ Create a single CartItem item. """
   createCartItem(data: CartItemCreateInput): CartItem
@@ -1340,7 +1340,7 @@ type Mutation {
   createInitialUser(data: CreateInitialUserInput!): UserAuthenticationWithPasswordSuccess!
   sendUserPasswordResetLink(email: String!): SendUserPasswordResetLinkResult
   redeemUserPasswordResetToken(email: String!, token: String!, password: String!): RedeemUserPasswordResetTokenResult
-  addToCart(productId: ID): CartItem
+  addToCart(guitarId: ID): CartItem
   checkout(token: String!): Order
   endSession: Boolean!
 }

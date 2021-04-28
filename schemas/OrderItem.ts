@@ -1,9 +1,8 @@
-import { integer, relationship, select, text } from '@keystone-next/fields';
+import { integer, relationship, select, text } from "@keystone-next/fields";
 import { list } from "@keystone-next/keystone/schema";
-import { isSignedIn, rules } from '../access';
+import { isSignedIn, rules } from "../access";
 
 export const OrderItem = list({
-  // TODO
   access: {
     create: isSignedIn,
     read: rules.canManageOrderItems,
@@ -12,22 +11,27 @@ export const OrderItem = list({
   },
   fields: {
     name: text({ isRequired: true }),
-    description: text({ 
+    description: text({
       ui: {
-        displayMode: 'textarea',
+        displayMode: "textarea",
       },
     }),
     photo: relationship({
-      ref: 'ProductImage',
+      ref: "GuitarImage",
       ui: {
-        displayMode: 'cards',
-        cardFields: ['image', 'altText'],
-        inlineCreate: { fields: ['image', 'altText'] },
-        inlineEdit: { fields: ['image', 'altText'] },
+        displayMode: "cards",
+        cardFields: ["image", "altText"],
+        inlineCreate: { fields: ["image", "altText"] },
+        inlineEdit: { fields: ["image", "altText"] },
       },
     }),
     price: integer(),
     quantity: integer(),
-    order: relationship({ ref: 'Order.items' }),
+    order: relationship({ ref: "Order.items" }),
+  },
+  ui: {
+    listView: {
+      initialColumns: ["name", "description", "price"],
+    },
   },
 });

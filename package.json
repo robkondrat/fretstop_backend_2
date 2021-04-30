@@ -4,7 +4,6 @@
   "private": true,
   "author": "Wes Bos",
   "license": "MIT",
-  "main": "index.js",
   "scripts": {
     "build": "keystone-next build",
     "start": "keystone-next start",

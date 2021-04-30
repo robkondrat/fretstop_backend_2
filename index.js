@@ -1,12 +1,14 @@
 const express = require('express');
 const request = require('request');
-
+const cors = require('cors');
 const app = express();
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+// app.use(cors((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// }));
+
+app.use(cors());
 
 app.get('/', (req, res) => {
   request(

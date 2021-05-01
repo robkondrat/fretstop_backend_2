@@ -2,5 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js"
+  "/users/[id]": "pages/users/[id].js",
+  "/roles": "pages/roles.js",
+  "/roles/[id]": "pages/roles/[id].js",
+  "/users": "pages/users.js",
+  "/signin": "pages/signin.js",
+  "/": "pages/index.js",
+  "/guitars": "pages/guitars.js",
+  "/guitar-images": "pages/guitar-images.js"
 }
